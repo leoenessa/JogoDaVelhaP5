@@ -58,45 +58,45 @@ function checarVitoria(){
       }
     }
   
-  //diagonal
-    for(let i=0;i<3;i++){
-      for(let j=0;j<3;j++){
-        if(i==j){
-          soma+=tabuleiro[i][j];  
-        }
-      }
-    }
-    if(soma==3){
-      //jogador2 ganhou
-        noLoop();
-        print("Jogador 2 ganhou!");
-    }else if(soma==-3){
-      //jogador1 ganhou
-        noLoop();
-        print("Jogador 1 ganhou!");
-    }else{
-      soma=0;
-      if(casasDisponiveis.length=0){
+//   //diagonal
+//     for(let i=0;i<3;i++){
+//       for(let j=0;j<3;j++){
+//         if(i==j){
+//           soma+=tabuleiro[i][j];  
+//         }
+//       }
+//     }
+//     if(soma==3){
+//       //jogador2 ganhou
+//         noLoop();
+//         print("Jogador 2 ganhou!");
+//     }else if(soma==-3){
+//       //jogador1 ganhou
+//         noLoop();
+//         print("Jogador 1 ganhou!");
+//     }else{
+//       soma=0;
+//       if(casasDisponiveis.length=0){
         
-        soma+=tabuleiro[0][2];
-        soma+=tabuleiro[1][1];  
-        soma+=tabuleiro[2][0];
+//         soma+=tabuleiro[0][2];
+//         soma+=tabuleiro[1][1];  
+//         soma+=tabuleiro[2][0];
 
-        if(soma==3){
-          //jogador2 ganhou
-            noLoop();
-            print("Jogador 2 ganhou!");
-        }else if(soma==-3){
-          //jogador1 ganhou
-            noLoop();
-            print("Jogador 1 ganhou!");
-        }else{
-          //empatou
-          noLoop();
-          print("Empatou!");
-        }
-        }
-    }
+//         if(soma==3){
+//           //jogador2 ganhou
+//             noLoop();
+//             print("Jogador 2 ganhou!");
+//         }else if(soma==-3){
+//           //jogador1 ganhou
+//             noLoop();
+//             print("Jogador 1 ganhou!");
+//         }else{
+//           //empatou
+//           noLoop();
+//           print("Empatou!");
+//         }
+//         }
+//     }
     
 }
 
@@ -197,6 +197,6 @@ function mousePressed(){
   let indice = checarDisponibilidade(casa);
   print(indice);
   escreverNoTabuleiro(casa,indice);
-  //checarVitoria();
+  checarVitoria();
   
 }
