@@ -3,7 +3,6 @@ let tabuleiro = [
   [0,0,0],
   [0,0,0]
 ];
-
 let jogador1 = -1;
 let jogador2 = 1;
 let vezjogador1 = true;
@@ -15,8 +14,7 @@ function escreverNoTabuleiro(casa,indice){
     let jogadorDaVez = vezjogador1 ? jogador1 : jogador2;
     tabuleiro[casa[0]][casa[1]] = jogadorDaVez;
     vezjogador1 = !vezjogador1;  
-  }
-  
+  } 
 }
 
 function checarVitoria(){
@@ -39,7 +37,6 @@ function checarVitoria(){
       }
     }
   
-  
   //vertical
     for(let i=0;i<3;i++){
       for(let j=0;j<3;j++){
@@ -58,46 +55,42 @@ function checarVitoria(){
       }
     }
   
-//   //diagonal
-//     for(let i=0;i<3;i++){
-//       for(let j=0;j<3;j++){
-//         if(i==j){
-//           soma+=tabuleiro[i][j];  
-//         }
-//       }
-//     }
-//     if(soma==3){
-//       //jogador2 ganhou
-//         noLoop();
-//         print("Jogador 2 ganhou!");
-//     }else if(soma==-3){
-//       //jogador1 ganhou
-//         noLoop();
-//         print("Jogador 1 ganhou!");
-//     }else{
-//       soma=0;
-//       if(casasDisponiveis.length=0){
-        
-//         soma+=tabuleiro[0][2];
-//         soma+=tabuleiro[1][1];  
-//         soma+=tabuleiro[2][0];
+  //diagonal1
+    soma+=tabuleiro[0][0];
+    soma+=tabuleiro[1][1];  
+    soma+=tabuleiro[2][2];
+    if(soma==3){
+      //jogador2 ganhou
+        noLoop();
+        print("Jogador 2 ganhou!");
+    }else if(soma==-3){
+      //jogador1 ganhou
+        noLoop();
+        print("Jogador 1 ganhou!");
+    }else{
+      soma=0;
+    }
+  
+  //diagonal2
+    soma+=tabuleiro[0][2];
+    soma+=tabuleiro[1][1];  
+    soma+=tabuleiro[2][0];
 
-//         if(soma==3){
-//           //jogador2 ganhou
-//             noLoop();
-//             print("Jogador 2 ganhou!");
-//         }else if(soma==-3){
-//           //jogador1 ganhou
-//             noLoop();
-//             print("Jogador 1 ganhou!");
-//         }else{
-//           //empatou
-//           noLoop();
-//           print("Empatou!");
-//         }
-//         }
-//     }
-    
+    if(soma==3){
+      //jogador2 ganhou
+        noLoop();
+        print("Jogador 2 ganhou!");
+    }else if(soma==-3){
+      //jogador1 ganhou
+        noLoop();
+        print("Jogador 1 ganhou!");
+    }else{
+      soma=0;
+    }   
+    if(casasDisponiveis.length==0){
+      noLoop();
+      print("Empate");
+    }
 }
 
 function desenharTabuleiro(){
@@ -124,9 +117,7 @@ function getCasasDisponiveis(){
 }
 
 function checarDisponibilidade(casa){
-  
   for(let i=0;i<casasDisponiveis.length;i++){ 
-    //print("Casa:"+casa+" Checando:"+casasDisponiveis[i]);
     if(casa[0] ==casasDisponiveis[i][0] && casa[1] ==casasDisponiveis[i][1] ){
       return i;
     }
@@ -190,7 +181,6 @@ function draw() {
   }
 }
 
-
 function mousePressed(){
   print("x:"+mouseX+" y:"+mouseY);
   let casa = getCasaClique(mouseX,mouseY);
@@ -198,5 +188,4 @@ function mousePressed(){
   print(indice);
   escreverNoTabuleiro(casa,indice);
   checarVitoria();
-  
 }
